@@ -1,1 +1,2 @@
 # simple_http_server_node
+#This is supposed to be a simple http server using node.js, I spent the most time on this one... without express this is actually a bit of a pain. Right now this program builds an http server when "node server.js" is entered into the command line. When the user attempts to load the localhost created (localhost: 8888 in this case) the program registers a request... having trouble getting the index.html file to load correctly... currently the index.html code is being printed onto the page... which is not what I want.

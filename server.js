@@ -1,5 +1,7 @@
 var http = require('http');
-var fs = require('fs');
+var fs = require('fs'); //damn you fs
+
+//In case it isn't clear, I tried this a few different ways but for some reason I can't get this to deploy right... the server runs and receives requests when I try to load the localhost page but does not run the index.html file correctly... instead it prints out the index.html code... very strange
 
 // http.createServer(function(request, response){
 //   console.log("A user has made a request " + request.url);
@@ -18,8 +20,8 @@ var fs = require('fs');
 
 function onRequest(request, response){
   console.log("A user has made a request " + request.url);
-  fs.readFile('./index.html', function(err, data){
-    if(!err && request.url == '/' || request.url == './index.html'){
+  fs.readFile('./index.html', function(err, data){ //this line has caused me the most trouble
+    if(!err && request.url == '/' || request.url == './index.html'){ //if I remove the ! from in front of err in this line then the 404 response is sent everytime... why won't index.html display?
       response.writeHead(200, {'Content-Type': 'text/plain'});
       fs.createReadStream('./index.html').pipe(response);
       response.end(data);
@@ -31,7 +33,7 @@ function onRequest(request, response){
   });
 }
 
-http.createServer(onRequest).listen(8888);
+http.createServer(onRequest).listen(8888); //listen at localhost:8888
 console.log("You done built yourself a server!")
 
 // function trigger404Error(response){
